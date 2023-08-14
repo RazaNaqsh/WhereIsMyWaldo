@@ -5,8 +5,11 @@ import React, { useState } from "react";
 
 import waldoImg from "@/public/images/chars.jpg";
 import { Marker } from "@/utils";
+import Popup from "@/components/Popup";
 
 const page = () => {
+  const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
+  const [isWindowOpen, setIsWindowOpen] = useState(false);
   const [marker, setMarker] = useState<Marker | null>(null);
 
   const showDetails = (e: any) => {
@@ -22,7 +25,11 @@ const page = () => {
       };
 
       setMarker(newMarker);
+
+      setWindowPosition({ x, y });
+      setIsWindowOpen(!isWindowOpen);
     } else {
+      setIsWindowOpen(false);
       setMarker(null); // Remove the marker on next click
     }
   };
@@ -39,6 +46,7 @@ const page = () => {
             style={{ left: marker.x, top: marker.y }}
           ></div>
         )}
+        {isWindowOpen && <Popup position={windowPosition} />}
         <Image
           src={waldoImg}
           alt="waldo-image"
