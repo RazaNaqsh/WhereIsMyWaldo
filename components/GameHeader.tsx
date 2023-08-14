@@ -1,10 +1,13 @@
+import Link from "next/link";
 import React from "react";
 
 const GameHeader = () => {
   return (
     <header className="flex justify-around pt-3 pb-4">
       <div>
-        <h2>Game</h2>
+        <Link href="/">
+          <h2>Game</h2>
+        </Link>
       </div>
       <div className="flex justify-around w-[30vw]">
         <div className="flex gap-10">
