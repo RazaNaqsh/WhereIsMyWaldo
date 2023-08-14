@@ -4,9 +4,10 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 import waldoImg from "@/public/images/chars.jpg";
+import { Marker } from "@/utils";
 
 const page = () => {
-  const [marker, setMarker] = useState(null);
+  const [marker, setMarker] = useState<Marker | null>(null);
 
   const showDetails = (e: any) => {
     let rect = e.target.getBoundingClientRect();
@@ -41,7 +42,7 @@ const page = () => {
         <Image
           src={waldoImg}
           alt="waldo-image"
-          className="cursor-crosshair -z-0"
+          className="cursor-crosshair -z-0 bg-blend-darken"
           // onClick={showDetails}
         />
       </div>
