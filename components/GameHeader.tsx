@@ -9,12 +9,17 @@ const GameHeader = ({
   timerActive: boolean;
   seconds: number;
 }) => {
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+  };
   return (
     <header className="flex justify-around pt-3 pb-4">
       <div>
         <Link href="/">
           <Text className="text-white" weight="medium" size="5">
-            Game
+            Home
           </Text>
         </Link>
       </div>
@@ -33,9 +38,9 @@ const GameHeader = ({
         <div>
           <Text className="text-white" weight="medium" size="3">
             {timerActive ? (
-              <p>Timer: {seconds} seconds</p>
+              <p>Timer: {formatTime(seconds)}</p>
             ) : (
-              <p>Timer: 00 seconds</p>
+              <p>Timer: 0:00 </p>
             )}
           </Text>
         </div>
