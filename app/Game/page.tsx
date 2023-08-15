@@ -1,20 +1,39 @@
 "use client";
 import GameHeader from "@/components/GameHeader";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import waldoImg from "@/public/images/chars.jpg";
 import { Marker } from "@/utils";
 import Popup from "@/components/Popup";
+import Overlay from "@/components/Overlay";
 
 const page = () => {
   const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
-  const [isWindowOpen, setIsWindowOpen] = useState(false);
+  const [isWindowOpen, setIsWindowOpen] = useState<boolean>(false);
   const [marker, setMarker] = useState<Marker | null>(null);
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState<boolean>(true);
+
+  const [timerActive, setTimerActive] = useState<boolean>(false);
+  const [seconds, setSeconds] = useState<number>(0);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (timerActive) {
+      interval = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds + 1);
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [timerActive]);
 
   const handleStartClick = () => {
     setShowOverlay(false);
+    setTimerActive(true);
   };
 
   const showDetails = (e: any) => {
@@ -40,25 +59,8 @@ const page = () => {
   };
   return (
     <div>
-      <GameHeader />
-      {showOverlay && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-black p-8 rounded shadow-md">
-            <h2 className="text-white text-xl font-semibold mb-4">
-              Spot the Characters
-            </h2>
-            <p className="text-gray-600 mb-4">
-              The Timer will commence when you click start
-            </p>
-            <button
-              className="m-auto bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-              onClick={handleStartClick}
-            >
-              Start
-            </button>
-          </div>
-        </div>
-      )}
+      <GameHeader timerActive={timerActive} seconds={seconds} />
+      {showOverlay && <Overlay handleStartClick={handleStartClick} />}
       <div
         className="container m-auto h-full w-full border-2 border-white relative"
         onClick={showDetails}

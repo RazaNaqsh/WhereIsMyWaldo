@@ -2,7 +2,13 @@ import { Text } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 
-const GameHeader = () => {
+const GameHeader = ({
+  timerActive,
+  seconds,
+}: {
+  timerActive: boolean;
+  seconds: number;
+}) => {
   return (
     <header className="flex justify-around pt-3 pb-4">
       <div>
@@ -26,7 +32,11 @@ const GameHeader = () => {
         </div>
         <div>
           <Text className="text-white" weight="medium" size="3">
-            Timer: 00
+            {timerActive ? (
+              <p>Timer: {seconds} seconds</p>
+            ) : (
+              <p>Timer: 00 seconds</p>
+            )}
           </Text>
         </div>
       </div>
