@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Text } from "@radix-ui/themes";
 
 const Main = () => {
   return (
@@ -15,10 +16,14 @@ const Main = () => {
       <div className="flex gap-10 mt-6">
         <div>
           {" "}
-          <h3>LeaderBoards</h3>
+          <Text className="text-white" weight="medium" size="5">
+            Leaderboards
+          </Text>
         </div>
         <div>
-          <h3>About</h3>
+          <Text className="text-white" weight="medium" size="5">
+            About
+          </Text>
         </div>
       </div>
     </div>

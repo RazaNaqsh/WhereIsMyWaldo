@@ -14,7 +14,7 @@ const Popup = ({ position }: { position: { x: number; y: number } }) => {
       }}
     >
       {chars.map((ch) => (
-        <p className="py-2 px-4 text-center cursor-pointer bg-black rounded-md m-1">
+        <p className="py-2 px-4 text-white text-center cursor-pointer bg-black rounded-md m-1">
           {ch}
         </p>
       ))}

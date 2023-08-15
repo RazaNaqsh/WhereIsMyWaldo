@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#1C1A1E] text-white p-2;
+  @apply bg-[#1C1A1E] text-white p-2 !important;
 }
 .marker {
   position: absolute;
