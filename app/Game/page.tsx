@@ -17,11 +17,18 @@ const page = () => {
   const [timerActive, setTimerActive] = useState<boolean>(false);
   const [seconds, setSeconds] = useState<number>(0);
 
+  const [selectedChar, setSelectedChar] = useState("");
   const chars: Character[] = [
     { id: 1, name: "red", isFound: false },
-    { id: 2, name: "pichu", isFound: true },
+    { id: 2, name: "pichu", isFound: false },
     { id: 3, name: "sonic", isFound: false },
   ];
+  const handleCharSelect = (
+    e: any,
+    ch: { id: number; name: string; isFound: boolean }
+  ) => {
+    console.log(ch.name);
+  };
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -78,7 +85,13 @@ const page = () => {
             style={{ left: marker.x, top: marker.y }}
           ></div>
         )}
-        {isWindowOpen && <Popup position={windowPosition} chars={chars} />}
+        {isWindowOpen && (
+          <Popup
+            position={windowPosition}
+            chars={chars}
+            handleCharSelect={handleCharSelect}
+          />
+        )}
         <Image
           src={waldoImg}
           alt="waldo-image"
