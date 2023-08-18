@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import connect from "@/utils/db";
 import Char from "@/models/Char";
 
@@ -17,13 +17,13 @@ export const POST = async (request: any): Promise<NextResponse> => {
   }
 };
 
-export const GET = async (request: any): Promise<NextResponse> => {
-  const { name } = request.query;
-
+export const GET = async (request: NextRequest) => {
+  const query = request.url.split("?")[1];
+  console.log(query);
   try {
     await connect();
 
-    const data = await Char.findOne({ name });
+    const data = await Char.findOne({ name: query });
 
     if (!data) {
       return new NextResponse("No Such Data", { status: 404 });

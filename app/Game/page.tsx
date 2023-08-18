@@ -17,6 +17,20 @@ const page = () => {
   const [timerActive, setTimerActive] = useState<boolean>(false);
   const [seconds, setSeconds] = useState<number>(0);
 
+  const fetchData = async (name: string) => {
+    try {
+      const response = await fetch(`/api/char?${name}`);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Retrieved data:", data);
+      } else {
+        console.error("Error fetching data");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const [selectedChar, setSelectedChar] = useState("");
   const chars: Character[] = [
     { id: 1, name: "red", isFound: false },
@@ -29,6 +43,8 @@ const page = () => {
   ) => {
     console.log(ch.name);
     setSelectedChar(ch.name);
+
+    fetchData(ch.name);
 
     //send req for validation for this char, and check if the
     // actual coordinates of the selected char which we get from db
