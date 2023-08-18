@@ -8,4 +8,4 @@ const charSchema = new Schema({
   y: Number,
 });
 
-export default mongoose.models.Post || mongoose.model("Char", charSchema);
+export default mongoose.models.Char || mongoose.model("Char", charSchema);

@@ -76,7 +76,6 @@ const page = () => {
           src={waldoImg}
           alt="waldo-image"
           className="cursor-crosshair -z-0 bg-blend-darken"
-          // onClick={showDetails}
         />
       </div>
     </div>

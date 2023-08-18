@@ -1,15 +1,17 @@
 import { NextResponse } from "next/server";
 import connect from "@/utils/db";
+import Char from "@/models/Char";
 
-export const GET = async (request: any): Promise<NextResponse> => {
-  const { x, y, name } = request.body;
+export const POST = async (request: any): Promise<NextResponse> => {
+  const { name, x, y } = await request.json();
 
   try {
     await connect(); // Call your database connection function
 
-    // Do something with the data (save, update, etc.)
+    const charData = new Char({ name, x, y });
+    await charData.save();
 
-    return new NextResponse(JSON.stringify({ isValid: true }), { status: 200 });
+    return new NextResponse(JSON.stringify({ charData }), { status: 200 });
   } catch (err) {
     return new NextResponse("Database Error", { status: 500 });
   }
