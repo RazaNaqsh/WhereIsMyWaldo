@@ -19,7 +19,7 @@ const page = () => {
 
   const chars: Character[] = [
     { id: 1, name: "red", isFound: false },
-    { id: 2, name: "pichu", isFound: false },
+    { id: 2, name: "pichu", isFound: true },
     { id: 3, name: "sonic", isFound: false },
   ];
 
