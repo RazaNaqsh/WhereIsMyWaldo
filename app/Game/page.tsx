@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import waldoImg from "@/public/images/chars.jpg";
-import { Marker } from "@/utils";
+import { Character, Marker } from "@/utils";
 import Popup from "@/components/Popup";
 import Overlay from "@/components/Overlay";
 
@@ -16,6 +16,12 @@ const page = () => {
 
   const [timerActive, setTimerActive] = useState<boolean>(false);
   const [seconds, setSeconds] = useState<number>(0);
+
+  const chars: Character[] = [
+    { id: 1, name: "red", isFound: false },
+    { id: 2, name: "pichu", isFound: false },
+    { id: 3, name: "sonic", isFound: false },
+  ];
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -40,13 +46,14 @@ const page = () => {
     let rect = e.target.getBoundingClientRect();
     let x = e.clientX - rect.left; //x position within the element.
     let y = e.clientY - rect.top; //y position within the element.
-    console.log("Left? : " + x + " ; Top? : " + y + ".");
 
     if (!marker) {
       const newMarker = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+        x,
+        y,
       };
+
+      console.log("Left? : " + x + " ; Top? : " + y + ".");
 
       setMarker(newMarker);
 
@@ -71,7 +78,7 @@ const page = () => {
             style={{ left: marker.x, top: marker.y }}
           ></div>
         )}
-        {isWindowOpen && <Popup position={windowPosition} />}
+        {isWindowOpen && <Popup position={windowPosition} chars={chars} />}
         <Image
           src={waldoImg}
           alt="waldo-image"

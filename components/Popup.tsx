@@ -1,8 +1,13 @@
-import { Marker } from "@/utils";
+import { Character } from "@/utils";
 import React from "react";
-interface Position {}
-const Popup = ({ position }: { position: { x: number; y: number } }) => {
-  const chars = ["red", "pichu", "sonic"];
+
+const Popup = ({
+  position,
+  chars,
+}: {
+  position: { x: number; y: number };
+  chars: Character[];
+}) => {
   return (
     <div
       style={{
@@ -14,8 +19,11 @@ const Popup = ({ position }: { position: { x: number; y: number } }) => {
       }}
     >
       {chars.map((ch) => (
-        <p className="py-2 px-4 text-white text-center cursor-pointer bg-black rounded-md m-1">
-          {ch}
+        <p
+          key={ch.id}
+          className="py-2 px-4 text-white text-center cursor-pointer bg-black rounded-md m-1"
+        >
+          {ch.name}
         </p>
       ))}
     </div>
