@@ -1,4 +1,4 @@
-import { Character } from "@/utils";
+import { Character } from "@/utils/types";
 import React from "react";
 
 const Popup = ({

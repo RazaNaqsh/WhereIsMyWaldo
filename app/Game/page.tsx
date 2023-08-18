@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import waldoImg from "@/public/images/chars.jpg";
-import { Character, Marker } from "@/utils";
+import { Character, Marker } from "@/utils/types";
 import Popup from "@/components/Popup";
 import Overlay from "@/components/Overlay";
 
