@@ -28,6 +28,14 @@ const page = () => {
     ch: { id: number; name: string; isFound: boolean }
   ) => {
     console.log(ch.name);
+    setSelectedChar(ch.name);
+
+    //send req for validation for this char, and check if the
+    // actual coordinates of the selected char which we get from db
+    // lies inside the marker If yes then mark that char isFound true,
+
+    //winning condition can be checked when all of the chars have isFound true
+    //by using useEffect, get the seconds then and ask for name, to save in leaderboards
   };
 
   useEffect(() => {
