@@ -1,12 +1,15 @@
 "use client";
-import GameHeader from "@/components/GameHeader";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 
 import waldoImg from "@/public/images/chars.jpg";
-import { Character, Marker } from "@/utils/types";
+import GameHeader from "@/components/GameHeader";
 import Popup from "@/components/Popup";
 import Overlay from "@/components/Overlay";
+import MarkerCircle from "@/components/Marker";
+
+import { Character, Marker } from "@/utils/types";
+import { fetchData } from "@/utils/Functions";
 
 const page = () => {
   const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
@@ -16,21 +19,6 @@ const page = () => {
 
   const [timerActive, setTimerActive] = useState<boolean>(false);
   const [seconds, setSeconds] = useState<number>(0);
-
-  const fetchData = async (name: string) => {
-    try {
-      const response = await fetch(`/api/char?${name}`);
-      if (response.ok) {
-        const res = await response.json();
-        console.log("Retrieved data:", res.data);
-        return res.data;
-      } else {
-        console.error("Error fetching data");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
 
   const [selectedChar, setSelectedChar] = useState("");
 
@@ -142,12 +130,7 @@ const page = () => {
         className="container m-auto h-full w-full border-2 border-white relative"
         onClick={showDetails}
       >
-        {marker && (
-          <div
-            className="absolute w-[90px] h-[90px] rounded-full border-[5px] border-dashed border-blue-500 bg-black bg-opacity-40 transform -translate-x-1/2 -translate-y-1/2 z-50"
-            style={{ left: marker.x, top: marker.y }}
-          ></div>
-        )}
+        {marker && <MarkerCircle marker={marker} />}
         {isWindowOpen && (
           <Popup
             position={windowPosition}
