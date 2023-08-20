@@ -10,8 +10,8 @@ const Popup = ({
   chars: Character[];
   handleCharSelect: any;
 }) => {
-  const remChars = chars.filter((ch) => ch.isFound == false);
-
+  const remChars = chars.filter((ch) => ch.isFound != true);
+  console.log(remChars);
   return (
     <div
       style={{

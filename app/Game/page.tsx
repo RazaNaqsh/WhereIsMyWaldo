@@ -34,11 +34,17 @@ const page = () => {
 
   const [selectedChar, setSelectedChar] = useState("");
 
-  const chars: Character[] = [
+  const [chars, setChars] = useState<Character[]>([
     { id: 1, name: "red", isFound: false },
     { id: 2, name: "pichu", isFound: false },
     { id: 3, name: "sonic", isFound: false },
-  ];
+  ]);
+
+  useEffect(() => {
+    if (chars.every((char) => char.isFound)) {
+      alert(`Game Ended! at ${seconds} seconds!`);
+    }
+  }, [chars]);
 
   const isCharInsideMark = (char: { name: string; x: number; y: number }) => {
     if (marker) {
@@ -64,9 +70,17 @@ const page = () => {
 
     const charData = await fetchData(ch.name);
 
+    console.log(selectedChar);
     console.log(charData);
     if (isCharInsideMark(charData)) {
       alert(`${charData.name} is inside`);
+      setChars((prev) =>
+        prev.map((ch) =>
+          ch.name === charData.name ? { ...ch, isFound: true } : ch
+        )
+      );
+
+      console.log(chars);
     } else {
       alert(`${charData.name} is not inside`);
     }
