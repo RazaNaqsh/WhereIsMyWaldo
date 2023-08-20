@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#1C1A1E] text-white p-2 !important;
+  @apply h-screen bg-gradient-to-b from-black to-gray-800 text-white p-2;
 }
 .marker {
   position: absolute;
@@ -11,6 +11,14 @@ body {
   height: 90px;
   border-radius: 50%;
   border: 5px dashed dodgerblue;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 1);
   transform: translate(-50%, -50%);
+}
+
+button {
+  @apply font-bold shadow-lg px-[2rem] py-[1rem]  rounded-xl m-4 text-xl font-sans hover:scale-95 transition-all ease-in-out duration-200;
+}
+
+.text-shadow {
+  text-shadow: black 1px 0 10px;
 }
