@@ -23,8 +23,11 @@ const GameHeader = ({
           </Text>
         </Link>
       </div>
-      <div className="flex justify-around w-[30vw]">
+      <div className="flex justify-around w-[40vw]">
         <div className="flex gap-10">
+          <Text className="text-white mr-3" weight="medium" size="5">
+            Find These Characters:-
+          </Text>
           <Text className="text-white" weight="medium" size="3">
             Red
           </Text>

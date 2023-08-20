@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply h-screen bg-gradient-to-b from-black to-gray-800 text-white p-2;
+  @apply bg-gray-900 text-white p-2;
 }
 .marker {
   position: absolute;

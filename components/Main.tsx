@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { Text } from "@radix-ui/themes";
 import Image from "next/image";
 import waldo from "../public/images/chars.jpg";
 const Main = () => {
