@@ -21,8 +21,9 @@ const page = () => {
     try {
       const response = await fetch(`/api/char?${name}`);
       if (response.ok) {
-        const data = await response.json();
-        console.log("Retrieved data:", data);
+        const res = await response.json();
+        console.log("Retrieved data:", res.data);
+        return res.data;
       } else {
         console.error("Error fetching data");
       }
@@ -32,19 +33,43 @@ const page = () => {
   };
 
   const [selectedChar, setSelectedChar] = useState("");
+
   const chars: Character[] = [
     { id: 1, name: "red", isFound: false },
     { id: 2, name: "pichu", isFound: false },
     { id: 3, name: "sonic", isFound: false },
   ];
-  const handleCharSelect = (
+
+  const isCharInsideMark = (char: { name: string; x: number; y: number }) => {
+    if (marker) {
+      if (
+        char.x > marker.x - 45 &&
+        char.x < marker.x + 40 &&
+        char.y > marker.y - 45 &&
+        char.y < marker.y + 45
+      ) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  const handleCharSelect = async (
     e: any,
     ch: { id: number; name: string; isFound: boolean }
   ) => {
     console.log(ch.name);
     setSelectedChar(ch.name);
 
-    fetchData(ch.name);
+    const charData = await fetchData(ch.name);
+
+    console.log(charData);
+    if (isCharInsideMark(charData)) {
+      alert(`${charData.name} is inside`);
+    } else {
+      alert(`${charData.name} is not inside`);
+    }
 
     //send req for validation for this char, and check if the
     // actual coordinates of the selected char which we get from db
