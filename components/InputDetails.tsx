@@ -1,9 +1,34 @@
 import React, { useState } from "react";
 
-const InputDetails = () => {
+interface InputDetailsProps {
+  setGameWon: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const InputDetails: React.FC<InputDetailsProps> = ({ setGameWon }) => {
   const [winner, setWinner] = useState<string>("");
 
-  const submitWinner = async () => {};
+  const submitWinner = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: winner }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.message);
+      } else {
+        console.error("Error saving winner:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error saving winner:", error);
+    }
+  };
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-black p-8 rounded shadow-md">
