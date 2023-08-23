@@ -13,7 +13,7 @@ export const POST = async (request: any): Promise<NextResponse> => {
 
     return new NextResponse(JSON.stringify({ charData }), { status: 200 });
   } catch (err) {
-    return new NextResponse("Database Error", { status: 500 });
+    return new NextResponse(JSON.stringify({msg:"Saving Error"}), { status: 500 });
   }
 };
 
@@ -26,10 +26,10 @@ export const GET = async (request: NextRequest) => {
     const data = await Char.findOne({ name: query });
 
     if (!data) {
-      return new NextResponse("No Such Data", { status: 404 });
+      return new NextResponse(JSON.stringify({msg:"no such data"}), { status: 404 });
     }
     return new NextResponse(JSON.stringify({ data }), { status: 200 });
   } catch (err) {
-    return new NextResponse("Database Error", { status: 500 });
+    return new NextResponse(JSON.stringify({msg:"Error occured"}), { status: 500 });
   }
 };

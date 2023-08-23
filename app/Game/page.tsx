@@ -125,7 +125,7 @@ const page = () => {
     <div>
       <GameHeader timerActive={timerActive} seconds={seconds} />
       {showOverlay && <Overlay handleStartClick={handleStartClick} />}
-      {gameWon && <InputDetails setGameWon={setGameWon} />}
+      {gameWon && <InputDetails setGameWon={setGameWon} seconds={seconds} />}
       <div
         className="container m-auto h-full w-full border-2 border-white relative"
         onClick={showDetails}
