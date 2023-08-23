@@ -10,8 +10,10 @@ import MarkerCircle from "@/components/Marker";
 
 import { Character, Marker } from "@/utils/types";
 import { fetchData } from "@/utils/Functions";
+import InputDetails from "@/components/InputDetails";
 
 const page = () => {
+  const [gameWon, setGameWon] = useState<boolean>(true);
   const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
   const [isWindowOpen, setIsWindowOpen] = useState<boolean>(false);
   const [marker, setMarker] = useState<Marker | null>(null);
@@ -31,6 +33,7 @@ const page = () => {
   useEffect(() => {
     if (chars.every((char) => char.isFound)) {
       alert(`Game Ended! at ${seconds} seconds!`);
+      setGameWon(true);
     }
   }, [chars]);
 
@@ -60,6 +63,7 @@ const page = () => {
 
     console.log(selectedChar);
     console.log(charData);
+
     if (isCharInsideMark(charData)) {
       alert(`${charData.name} is inside`);
       setChars((prev) =>
@@ -73,11 +77,6 @@ const page = () => {
       alert(`${charData.name} is not inside`);
     }
 
-    //send req for validation for this char, and check if the
-    // actual coordinates of the selected char which we get from db
-    // lies inside the marker If yes then mark that char isFound true,
-
-    //winning condition can be checked when all of the chars have isFound true
     //by using useEffect, get the seconds then and ask for name, to save in leaderboards
   };
 
@@ -126,6 +125,7 @@ const page = () => {
     <div>
       <GameHeader timerActive={timerActive} seconds={seconds} />
       {showOverlay && <Overlay handleStartClick={handleStartClick} />}
+      {gameWon && <InputDetails />}
       <div
         className="container m-auto h-full w-full border-2 border-white relative"
         onClick={showDetails}
