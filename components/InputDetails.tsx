@@ -24,6 +24,7 @@ const InputDetails: React.FC<InputDetailsProps> = ({ seconds, setGameWon }) => {
         const data = await response.json();
         console.log(data);
       } else {
+        alert(response.statusText);
         console.error("Error saving winner:", response.statusText);
       }
     } catch (error) {
