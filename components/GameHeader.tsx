@@ -5,9 +5,13 @@ import React from "react";
 const GameHeader = ({
   timerActive,
   seconds,
+  gameWon,
+  finalSeconds,
 }: {
   timerActive: boolean;
   seconds: number;
+  gameWon: boolean;
+  finalSeconds: number;
 }) => {
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60);
@@ -23,7 +27,7 @@ const GameHeader = ({
           </Text>
         </Link>
       </div>
-      <div className="flex justify-around w-[40vw]">
+      <div className="flex justify-around w-[40vw] gap-5">
         <div className="flex gap-10">
           <Text className="text-white mr-3" weight="medium" size="5">
             Find These Characters:-
@@ -43,7 +47,7 @@ const GameHeader = ({
             {timerActive ? (
               <p>Timer: {formatTime(seconds)}</p>
             ) : (
-              <p>Timer: 0:00 </p>
+              <p>Timer: {gameWon ? formatTime(finalSeconds) : "00:00"} </p>
             )}
           </Text>
         </div>

@@ -13,7 +13,7 @@ import { fetchData } from "@/utils/Functions";
 import InputDetails from "@/components/InputDetails";
 
 const page = () => {
-  const [gameWon, setGameWon] = useState<boolean>(true);
+  const [gameWon, setGameWon] = useState<boolean>(false);
   const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
   const [isWindowOpen, setIsWindowOpen] = useState<boolean>(false);
   const [marker, setMarker] = useState<Marker | null>(null);
@@ -21,6 +21,7 @@ const page = () => {
 
   const [timerActive, setTimerActive] = useState<boolean>(false);
   const [seconds, setSeconds] = useState<number>(0);
+  const [finalSeconds, setFinalSeconds] = useState<number>(0);
 
   const [selectedChar, setSelectedChar] = useState("");
 
@@ -32,7 +33,9 @@ const page = () => {
 
   useEffect(() => {
     if (chars.every((char) => char.isFound)) {
-      alert(`Game Ended! at ${seconds} seconds!`);
+      alert(`Game Ended! at ${finalSeconds} seconds!`);
+      setFinalSeconds(seconds);
+      setTimerActive(false);
       setGameWon(true);
     }
   }, [chars]);
@@ -123,9 +126,16 @@ const page = () => {
   };
   return (
     <div>
-      <GameHeader timerActive={timerActive} seconds={seconds} />
+      <GameHeader
+        timerActive={timerActive}
+        seconds={seconds}
+        gameWon={gameWon}
+        finalSeconds={finalSeconds}
+      />
       {showOverlay && <Overlay handleStartClick={handleStartClick} />}
-      {gameWon && <InputDetails setGameWon={setGameWon} seconds={seconds} />}
+      {gameWon && (
+        <InputDetails setGameWon={setGameWon} seconds={finalSeconds} />
+      )}
       <div
         className="container m-auto h-full w-full border-2 border-white relative"
         onClick={showDetails}
