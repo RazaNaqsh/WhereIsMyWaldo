@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface InputDetailsProps {
   setGameWon: React.Dispatch<React.SetStateAction<boolean>>;
@@ -6,6 +7,8 @@ interface InputDetailsProps {
 }
 
 const InputDetails: React.FC<InputDetailsProps> = ({ seconds, setGameWon }) => {
+  const router = useRouter();
+
   const [winner, setWinner] = useState<string>("");
 
   const submitWinner = async (e: React.FormEvent) => {
@@ -23,6 +26,9 @@ const InputDetails: React.FC<InputDetailsProps> = ({ seconds, setGameWon }) => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
+
+        setGameWon(false);
+        router.push("/Leaderboards");
       } else {
         alert(response.statusText);
         console.error("Error saving winner:", response.statusText);
@@ -31,6 +37,7 @@ const InputDetails: React.FC<InputDetailsProps> = ({ seconds, setGameWon }) => {
       console.error("Error saving winner:", error);
     }
   };
+
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-black p-8 rounded shadow-md">

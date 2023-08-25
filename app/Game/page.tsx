@@ -33,8 +33,8 @@ const page = () => {
 
   useEffect(() => {
     if (chars.every((char) => char.isFound)) {
-      alert(`Game Ended! at ${finalSeconds} seconds!`);
       setFinalSeconds(seconds);
+      alert(`Game Ended! at ${seconds} seconds!`);
       setTimerActive(false);
       setGameWon(true);
     }
