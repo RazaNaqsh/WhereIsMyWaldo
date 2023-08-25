@@ -15,7 +15,7 @@ const InputDetails: React.FC<InputDetailsProps> = ({ seconds, setGameWon }) => {
     e.preventDefault();
     console.log(seconds);
     try {
-      const response = await fetch("/api/upload", {
+      const response = await fetch("/api/score", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

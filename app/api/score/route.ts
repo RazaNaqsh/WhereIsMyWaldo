@@ -12,8 +12,24 @@ export const POST = async (request: any): Promise<NextResponse> => {
 
     return new NextResponse(JSON.stringify({ winnerData }), { status: 200 });
   } catch (err) {
-    return new NextResponse(JSON.stringify({ msg: "Saving Error" }), {
-      status: 500,
-    });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+};
+
+export const GET = async (request: any): Promise<NextResponse> => {
+  try {
+    await connect();
+
+    const scores = await Winner.find();
+
+    return new NextResponse(JSON.stringify({ scores }), { status: 200 });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 };
