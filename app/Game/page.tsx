@@ -78,8 +78,6 @@ const page = () => {
     } else {
       alert(`${charData.name} is not inside`);
     }
-
-    //by using useEffect, get the seconds then and ask for name, to save in leaderboards
   };
 
   useEffect(() => {
