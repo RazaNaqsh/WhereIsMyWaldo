@@ -1,11 +1,14 @@
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
   return (
     <header>
-      <h1 className="text-shadow text-center text-white text-4xl">
-        Where's My Waldo
-      </h1>
+      <Link href="/">
+        <h1 className="text-shadow text-center text-white text-4xl">
+          Where's My Waldo
+        </h1>
+      </Link>
     </header>
   );
 };

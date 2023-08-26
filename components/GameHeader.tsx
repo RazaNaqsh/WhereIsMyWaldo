@@ -1,3 +1,4 @@
+import { formatTime } from "@/utils/Functions";
 import { Text } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
@@ -13,11 +14,6 @@ const GameHeader = ({
   gameWon: boolean;
   finalSeconds: number;
 }) => {
-  const formatTime = (seconds: number): string => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-  };
   return (
     <header className="flex justify-around pt-3 pb-4">
       <div>

@@ -1,5 +1,6 @@
 "use client";
 import Navbar from "@/components/Navbar";
+import { formatTime } from "@/utils/Functions";
 import React, { useState, useEffect } from "react";
 
 interface Score {
@@ -36,22 +37,28 @@ const page = () => {
   return (
     <div>
       <Navbar />
-      <section>
-        <h1 className="text-center ">LeaderBoards</h1>
-        <div>
-          <div className="flex gap-5">
-            <p>Index</p>
-            <p>Name</p>
-            <p>Time Taken</p>
-          </div>
-          {scores &&
-            scores.map((score, idx) => (
-              <div key={score.id} className="flex gap-5">
-                <p>{idx + 1}</p>
-                <p>{score.name}</p>
-                <p>{score.seconds}</p>
-              </div>
-            ))}
+      <section className="text-center mt-8">
+        <h1 className="text-3xl font-semibold">LeaderBoards</h1>
+        <div className="mt-8">
+          <table className="w-[80%] m-auto border-collapse">
+            <thead>
+              <tr>
+                <th className="py-2">Idx</th>
+                <th className="py-2">Name</th>
+                <th className="py-2">Time Taken</th>
+              </tr>
+            </thead>
+            <tbody>
+              {scores &&
+                scores.map((score, idx) => (
+                  <tr key={idx} className="text-center border-t">
+                    <td className="py-2">{idx + 1}</td>
+                    <td className="py-2">{score.name}</td>
+                    <td className="py-2">{formatTime(score.seconds)} min</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
         </div>
       </section>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { formatTime } from "@/utils/Functions";
 
 interface InputDetailsProps {
   setGameWon: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,6 +42,12 @@ const InputDetails: React.FC<InputDetailsProps> = ({ seconds, setGameWon }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-black p-8 rounded shadow-md">
+        <h2
+          className=" text-center text-white t
+        ext-2xl font-semibold mb-4"
+        >
+          You Completed the game in {formatTime(seconds)} min
+        </h2>
         <h2
           className=" text-center text-white t
         ext-xl font-semibold mb-4"
