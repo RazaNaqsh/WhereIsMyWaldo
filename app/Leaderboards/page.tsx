@@ -52,7 +52,7 @@ const page = () => {
               {scores &&
                 scores.map((score, idx) => (
                   <tr key={idx} className="text-center border-t">
-                    <td className="py-2">{idx + 1}</td>
+                    <td className="py-2">{scores.length - idx}</td>
                     <td className="py-2">{score.name}</td>
                     <td className="py-2">{formatTime(score.seconds)} min</td>
                   </tr>

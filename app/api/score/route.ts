@@ -25,7 +25,11 @@ export const GET = async (request: any): Promise<NextResponse> => {
 
     const scores = await Winner.find();
 
-    return new NextResponse(JSON.stringify({ scores }), { status: 200 });
+    const reversedScores = scores.reverse();
+
+    return new NextResponse(JSON.stringify({ scores: reversedScores }), {
+      status: 200,
+    });
   } catch (err) {
     return NextResponse.json(
       { error: "Internal Server Error" },
