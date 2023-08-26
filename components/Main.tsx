@@ -20,14 +20,18 @@ const Main = () => {
       <div className="flex gap-14 mt-8">
         <div>
           {" "}
-          <button className="game-btn  text-shadow  bg-indigo-500 hover:bg-indigo-600">
-            LeaderBoards
-          </button>
+          <Link href="/Leaderboards">
+            <button className="game-btn  text-shadow  bg-indigo-500 hover:bg-indigo-600">
+              LeaderBoards
+            </button>
+          </Link>
         </div>
         <div>
-          <button className="game-btn text-shadow bg-yellow-600 hover:bg-yellow-500">
-            About
-          </button>
+          <Link href="/About">
+            <button className="game-btn text-shadow bg-yellow-600 hover:bg-yellow-500">
+              About
+            </button>
+          </Link>
         </div>
       </div>
     </div>
