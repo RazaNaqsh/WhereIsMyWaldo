@@ -124,6 +124,7 @@ const page = () => {
   return (
     <div>
       <GameHeader
+        chars={chars}
         timerActive={timerActive}
         seconds={seconds}
         gameWon={gameWon}
