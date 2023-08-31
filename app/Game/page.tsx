@@ -12,7 +12,7 @@ import { Character, Marker } from "@/utils/types";
 import { fetchData } from "@/utils/Functions";
 import InputDetails from "@/components/InputDetails";
 
-const page: React.FC = () => {
+const Page: React.FC = () => {
   const [gameWon, setGameWon] = useState<boolean>(false);
   const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
   const [isWindowOpen, setIsWindowOpen] = useState<boolean>(false);
@@ -156,4 +156,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
+export default Page;

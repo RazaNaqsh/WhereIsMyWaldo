@@ -11,7 +11,7 @@ interface Score {
 
 interface Scores extends Array<Score> {}
 
-const page: React.FC = () => {
+const Page: React.FC = () => {
   const [scores, SetScores] = useState<Scores>();
 
   const fetchData = async () => {
@@ -65,4 +65,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
+export default Page;
