@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import waldoImg from "@/public/images/chars.jpg";
@@ -12,7 +12,7 @@ import { Character, Marker } from "@/utils/types";
 import { fetchData } from "@/utils/Functions";
 import InputDetails from "@/components/InputDetails";
 
-const page = () => {
+const page: React.FC = () => {
   const [gameWon, setGameWon] = useState<boolean>(false);
   const [windowPosition, setWindowPosition] = useState({ x: 0, y: 0 });
   const [isWindowOpen, setIsWindowOpen] = useState<boolean>(false);

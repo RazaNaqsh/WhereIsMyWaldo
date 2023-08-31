@@ -33,7 +33,7 @@ const GameHeader = ({
       </div>
       <div className="flex gap-10">
         {chars.map((ch) => (
-          <div className="flex mx-4 items-center">
+          <div key={ch.id} className="flex mx-4 items-center">
             <Image
               src={`/images/${ch.name}.png`}
               width={30}

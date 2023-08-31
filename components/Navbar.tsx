@@ -6,7 +6,7 @@ const Navbar = () => {
     <header>
       <Link href="/">
         <h1 className="text-shadow text-center text-white text-4xl">
-          Where's My Waldo
+          Wheres My Waldo
         </h1>
       </Link>
     </header>
