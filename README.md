@@ -15,7 +15,7 @@ https://wheres-my-waldo.vercel.app/
 
 ## Technologies Used
 
-Next.js: A React framework for server-rendered applications.
-Tailwind CSS: A utility-first CSS framework for styling.
-TypeScript: A typed superset of JavaScript for improved development experience.
-API Routes: Next.js API routes for creating custom backend APIs.
+- Next.js: A React framework for server-rendered applications.
+- Tailwind CSS: A utility-first CSS framework for styling.
+- TypeScript: A typed superset of JavaScript for improved development experience.
+- API Routes: Next.js API routes for creating custom backend APIs.
