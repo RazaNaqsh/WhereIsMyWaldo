@@ -5,19 +5,19 @@ import waldo from "../public/images/chars.jpg";
 const Main = () => {
   return (
     <div className="container m-auto h-[80vh]  flex flex-col justify-center items-center">
-      <div className="mt-10 w-[600px] h-[500px] relative  border-white border-2 flex justify-center items-end rounded-md">
+      <div className="mt-10 w-[600px] h-[500px] relative flex justify-center items-end rounded-lg overflow-hidden">
         <Image
           src={waldo}
           className="h-full w-full absolute object-cover -z-10 opacity-80"
           alt="WaldoImage"
         />
         <Link href="/Game" className="">
-          <button className="game-btn text-shadow bg-slate-900 hover:bg-slate-800">
+          <button className="game-btn text-shadow bg-slate-900 hover:bg-slate-800 rounded-tr-[50%]">
             Start
           </button>
         </Link>
       </div>
-      <div className="flex gap-14 mt-8">
+      <div className="flex gap-14 mt-8 p-2 bg-gray-800 bg-opacity-75 rounded-lg">
         <div>
           {" "}
           <Link href="/Leaderboards">
