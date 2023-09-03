@@ -32,6 +32,9 @@ const Page: React.FC = () => {
   ]);
 
   useEffect(() => {
+    fetchData(""); //empty call to prefetch api
+  }, []);
+  useEffect(() => {
     if (chars.every((char) => char.isFound)) {
       setFinalSeconds(seconds);
       setTimerActive(false);
