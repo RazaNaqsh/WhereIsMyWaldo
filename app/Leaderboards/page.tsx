@@ -38,11 +38,13 @@ const Page: React.FC = () => {
     <div>
       <Navbar />
       <section className="text-center mt-8">
-        <h1 className="text-3xl font-semibold">LeaderBoards</h1>
+        <h1 className="text-3xl font-semibold p-2 bg-gray-800 bg-opacity-75 rounded-lg">
+          LeaderBoards
+        </h1>
         <div className="mt-8">
           <table className="w-[80%] m-auto border-collapse">
             <thead>
-              <tr>
+              <tr className=" p-2 bg-gray-950 bg-opacity-60 rounded-full">
                 <th className="py-2">Idx</th>
                 <th className="py-2">Name</th>
                 <th className="py-2">Time Taken</th>

@@ -24,7 +24,7 @@ const GameHeader = ({
 }) => {
   return (
     <header className="flex items-center justify-around pt-3 pb-4">
-      <div>
+      <div className=" p-3 bg-gray-800 bg-opacity-75 rounded-lg">
         <Link href="/">
           <Text
             className="text-white text-xl tracking-wider font-bold"
