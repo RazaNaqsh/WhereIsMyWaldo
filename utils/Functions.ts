@@ -1,5 +1,9 @@
 export const fetchData = async (name: string) => {
   try {
+    if (!name) {
+      console.log("No Incoming Data");
+      return;
+    }
     const response = await fetch(`/api/char?${name}`);
     if (response.ok) {
       const res = await response.json();

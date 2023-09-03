@@ -34,6 +34,7 @@ const Page: React.FC = () => {
   useEffect(() => {
     fetchData(""); //empty call to prefetch api
   }, []);
+
   useEffect(() => {
     if (chars.every((char) => char.isFound)) {
       setFinalSeconds(seconds);
@@ -53,7 +54,6 @@ const Page: React.FC = () => {
         return true;
       }
     }
-
     return false;
   };
 
@@ -70,7 +70,7 @@ const Page: React.FC = () => {
     console.log(charData);
 
     if (isCharInsideMark(charData)) {
-      alert(`${charData.name} is inside`);
+      alert(`Great! You Found ${charData.name}`);
       setChars((prev) =>
         prev.map((ch) =>
           ch.name === charData.name ? { ...ch, isFound: true } : ch
